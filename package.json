@@ -1,0 +1,25 @@
+{
+  "name": "mytinerary-back-thoma-uriel",
+  "version": "1.0.0",
+  "description": "My backend MERN app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCT/mytinerary-back-ThomaUriel.git"
+  },
+  "author": "Uriel Thoma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UrielCT/mytinerary-back-ThomaUriel/issues"
+  },
+  "homepage": "https://github.com/UrielCT/mytinerary-back-ThomaUriel#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
