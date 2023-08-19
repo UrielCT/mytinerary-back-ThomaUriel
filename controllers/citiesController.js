@@ -1,24 +1,79 @@
-import cities from '../cities.js';
+//import cities from '../cities.js';
+import City from '../Models/City.js';
 
 
 const citiesController = {
-    getAllCities: (req, res, next) => {
+    getAllCities: async (req, res, next) => {
+        let cities;
+        let error = null;
+        let success = true;
+
+        try {
+        cities = await City.find()
+        } catch (e) {
+            console.log(e)
+            success = false;
+            error = e
+        }
+
         res.json({
             response: cities,
-            success: true,
-            error: null
+            success,
+            error
         })
     },
-    getOneCity: (req, res, next) => {
-        const {name} = req.params
 
-        const city = cities.find(city => city.name === name)
+
+    getOneCity: async (req, res, next) => {
+        console.log(req.params);
+        const {id} = req.params
+        console.log(id);
+        let cities;
+        let error = null;
+        let success = true;
+
+
+        try {
+            cities = await City.findById(id)
+        } catch (e) {
+            console.log(e)
+            success = false;
+            error = e
+        }
+
+        //const city = cities.find(city => city.name === name)
         res.json({
-            response: city,
-            success: true,
-            error: null
+            response: cities,
+            success,
+            error
         })
     },
+
+
+    createOneCity: async (req, res, next) => {
+        let city;
+        let error = null;
+        let success = true;
+
+        try {
+            /* const newCity = new City(req.body)
+            await newCity.save()
+            console.log(newCity); */
+            
+            city = await City.create(req.body)
+        }catch(e){
+            console.log(e)
+            success = false;
+            error = e
+        }
+
+        res.json({
+            response: null, 
+            success,
+            error
+        })
+    },
+
 
 
 }

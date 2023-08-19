@@ -6,10 +6,13 @@ import './config/database.js'
 
 const server = express();
 
+server.use(cors())
+server.use(express.json())
 server.use('/api', indexRouter)
 
+
 server.get('/', (req,res,next) => {
-    res.send("Bienvenido a mi servidor en /")
+    res.send("Bienvenido a mi servidor")
 })
 
 
