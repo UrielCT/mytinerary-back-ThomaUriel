@@ -10,24 +10,26 @@ const citiesController = {
 
         try {
         cities = await City.find()
+
+        res.json({
+            response: cities,
+            success,
+        })
+            error
         } catch (e) {
             console.log(e)
             success = false;
             error = e
         }
 
-        res.json({
-            response: cities,
-            success,
-            error
-        })
+        
     },
 
 
     getOneCity: async (req, res, next) => {
-        console.log(req.params);
+        //console.log(req.params);
         const {id} = req.params
-        console.log(id);
+        //console.log(id);
         let cities;
         let error = null;
         let success = true;
@@ -73,7 +75,37 @@ const citiesController = {
             error
         })
     },
+    updateOneEvent: async(req, res, next) => {
+        const { id } = req.params
+        let city;
+        let success = true;
+        try {
+            city = await City.findOneAndUpdate({ id: id}, req.body, { new : true });
+            res.json({
+                response: city,
+                success,
+            })
+        } catch (e) {
+            success = false;
+            next(e);
+        }
 
+    },
+    deleteOneEvent: async(req, res, next)=>{
+        const { id } = req.params
+        let city;
+        let success = true;
+        try {
+            city = await City.findOneAndDelete({ id: id});
+            res.json({
+                response: city,
+                success,
+            })
+        } catch (e) {
+            success = false;
+            next(e);
+        }
+    },
 
 
 }
