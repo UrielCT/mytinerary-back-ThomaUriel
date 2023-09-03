@@ -75,12 +75,12 @@ const citiesController = {
             error
         })
     },
-    updateOneEvent: async(req, res, next) => {
+    updateOneCity: async(req, res, next) => {
         const { id } = req.params
         let city;
         let success = true;
         try {
-            city = await City.findOneAndUpdate({ id: id}, req.body, { new : true });
+            city = await City.findOneAndUpdate({ _id: id}, req.body, { new : true });
             res.json({
                 response: city,
                 success,
@@ -91,12 +91,12 @@ const citiesController = {
         }
 
     },
-    deleteOneEvent: async(req, res, next)=>{
+    deleteOneCity: async(req, res, next)=>{
         const { id } = req.params
         let city;
         let success = true;
         try {
-            city = await City.findOneAndDelete({ id: id});
+            city = await City.findOneAndDelete({ _id: id});
             res.json({
                 response: city,
                 success,
