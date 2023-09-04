@@ -7,7 +7,7 @@ const itinerarySchema = Schema({
     price: { type: Number, required: true},
     duration: { type: Number, required: true},
     likes: { type: Number, default: 0},
-    hashtags: { type: String, required: true}, 
+    hashtags: { type: Array, required: true}, 
     comments: { type: String}, 
 },
 {
